@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "lite_magnets",
+  "version": "${version}",
+
+  "name": "Lite magnets",
+  "description": "Another magnet mod...",
+  "authors": [
+    "Alireza Ahani"
+  ],
+
+  "license": "GPL-3",
+  
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "pythoner.alirezaahani.liteMagnets"
+    ]
+  },
+  "mixins": [
+    "modid.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
