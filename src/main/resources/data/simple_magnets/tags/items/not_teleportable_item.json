@@ -2,6 +2,14 @@
     "replace": false,
     "values": [
       "minecraft:diamond",
-      "minecraft:emerald"
+      "minecraft:emerald",
+      "minecraft:netherite_ingot",
+      "minecraft:gold_ingot",
+      "minecraft:golden_apple",
+      "minecraft:enchanted_golden_apple",
+      "minecraft:totem_of_undying",
+      "minecraft:redstone",
+      "minecraft:lapis_lazuli",
+      "minecraft:ender_pearl"
     ]
   }
