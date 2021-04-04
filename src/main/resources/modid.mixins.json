@@ -1,12 +1,12 @@
 {
-  "required": true,
+  "required": false,
   "minVersion": "0.8",
-  "package": "pythoner.alirezaahani.liteMagnetsMixin",
+  "package": "alirezaahani.simpleMagnets.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],
   "client": [
-    "liteMagnetsMixin"
+    "simpleMagnetsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

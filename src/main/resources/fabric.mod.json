@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "lite_magnets",
-  "version": "${version}",
+  "id": "simple_magnets",
+  "version": "0.0.2",
 
-  "name": "Lite magnets",
+  "name": "Simple magnets",
   "description": "Another magnet mod...",
   "authors": [
     "Alireza Ahani"
@@ -14,7 +14,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "pythoner.alirezaahani.liteMagnets"
+      "alirezaahani.simpleMagnets.simpleMagnets"
     ]
   },
   "mixins": [
