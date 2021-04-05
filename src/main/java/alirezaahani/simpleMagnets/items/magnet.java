@@ -24,7 +24,7 @@ import net.minecraft.tag.Tag;
 public class magnet extends Item {
 
     private int maxRange;
-    public static Tag<Item> notTeleportableItem = TagRegistry.item(new Identifier("simple_magnets","s"));
+    public static Tag<Item> notTeleportableItem = TagRegistry.item(new Identifier("simple_magnets","not_teleportable_item"));
 
     public magnet(Settings settings, int maxRange) {
         super(settings);
@@ -65,4 +65,5 @@ public class magnet extends Item {
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.simple_magnets.magnet.tooltip", this.maxRange));
     }
+    
 }
