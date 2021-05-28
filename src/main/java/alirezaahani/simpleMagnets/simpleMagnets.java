@@ -9,6 +9,6 @@ public class simpleMagnets implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		Registry.register(Registry.ITEM, new Identifier("simple_magnets","magnet"), new magnet(16));
+		Registry.register(Registry.ITEM, new Identifier("simple_magnets","magnet"), new magnet());
 	} 
 }

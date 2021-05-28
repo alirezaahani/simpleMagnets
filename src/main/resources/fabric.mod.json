@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "simple_magnets",
-  "version": "0.0.1",
+  "version": "${version}",
 
   "name": "Simple magnets",
   "description": "Another magnet mod...",
@@ -9,7 +9,7 @@
     "Alireza Ahani"
   ],
 
-  "license": "GPL-3",
+  "license": "MIT",
   
   "environment": "*",
   "entrypoints": {
@@ -23,7 +23,5 @@
     "fabric": "*",
     "minecraft": "1.16.x"
   },
-  "suggests": {
-    "another-mod": "*"
-  }
+  "icon": "assets/simple_magnets/icon.png"
 }

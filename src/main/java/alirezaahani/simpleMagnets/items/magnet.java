@@ -20,13 +20,15 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.tag.Tag;
 
 public class magnet extends Item {
 
-    short maxRange = 16, ticks = 0;
+    private short maxRange = 16;
+    private int ticks = 0;
     private static String stateId = "ACTIVE";
 
     private Tag<Item> notTeleportableItem = TagRegistry.item(new Identifier("simple_magnets","not_teleportable_item"));
@@ -60,8 +62,8 @@ public class magnet extends Item {
         this.setState(stack, !getState(stack));
     }
 
-    public magnet(int maxRange) {
-        super(new FabricItemSettings().group(ItemGroup.TOOLS).maxDamage(128));
+    public magnet() {
+        super(new FabricItemSettings().group(ItemGroup.TOOLS).maxDamage(1024).rarity(Rarity.UNCOMMON));
     }
 
     @Override
@@ -77,14 +79,13 @@ public class magnet extends Item {
         if(!(entity instanceof PlayerEntity))
             return;
         
+        this.ticks++;
         PlayerEntity player = (PlayerEntity) entity;
         boolean hasCollected = false;
 
-        ++this.ticks;
-
-        if(ticks % 10 != 0)
+        if(!(ticks % 5 == 0))
             return;
-
+        
         if(!this.getState(stack))
             return;
         
@@ -101,7 +102,7 @@ public class magnet extends Item {
             }
         }
         
-        if (!player.isCreative() && hasCollected)
+        if ((!player.isCreative()) && hasCollected)
         {
             stack.damage(1, player, (p) -> { p.sendToolBreakStatus(player.getActiveHand()); });
         }
