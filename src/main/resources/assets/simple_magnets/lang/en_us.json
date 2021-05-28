@@ -1,4 +1,5 @@
 {
     "item.simple_magnets.magnet": "Magnet",
-    "item.simple_magnets.magnet.tooltip": "Range: %d blocks"
+    "item.simple_magnets.magnet.tooltip.range": "Range: %d blocks",
+    "item.simple_magnets.magnet.tooltip.state": "Enabled: %d"
 }

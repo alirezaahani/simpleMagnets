@@ -10,6 +10,7 @@
       "minecraft:totem_of_undying",
       "minecraft:redstone",
       "minecraft:lapis_lazuli",
-      "minecraft:ender_pearl"
+      "minecraft:ender_pearl",
+      "simple_magnets:magnet"
     ]
   }

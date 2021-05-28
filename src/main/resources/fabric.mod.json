@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "simple_magnets",
-  "version": "0.0.2",
+  "version": "0.0.1",
 
   "name": "Simple magnets",
   "description": "Another magnet mod...",
@@ -17,9 +17,6 @@
       "alirezaahani.simpleMagnets.simpleMagnets"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.7.4",
