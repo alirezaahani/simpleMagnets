@@ -1,0 +1,12 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "alirezaahani.simpleMagnets.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": ["mendingMixin"],
+    "client": [],
+    "server": [],
+    "injectors": {
+      "defaultRequire": 1
+    }
+  }
