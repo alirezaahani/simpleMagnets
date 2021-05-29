@@ -27,9 +27,9 @@ import net.minecraft.tag.Tag;
 
 public class magnet extends Item {
 
-    private short maxRange = 16;
+    private final static short maxRange = 16;
+    private final static String stateId = "ACTIVE";
     private int ticks = 0;
-    private static String stateId = "ACTIVE";
 
     private Tag<Item> notTeleportableItem = TagRegistry.item(new Identifier("simple_magnets","not_teleportable_item"));
 
@@ -92,7 +92,7 @@ public class magnet extends Item {
         if(player.isSneaking())
             return;
         
-        for(Entity nearbyEntity: world.getEntitiesByType(EntityType.ITEM, player.getBoundingBox().expand(this.maxRange), EntityPredicates.VALID_ENTITY))
+        for(Entity nearbyEntity: world.getEntitiesByType(EntityType.ITEM, player.getBoundingBox().expand(maxRange), EntityPredicates.VALID_ENTITY))
         {
             ItemEntity itemEntity = (ItemEntity) nearbyEntity;
             if(!(itemEntity.getStack().getItem().isIn(this.notTeleportableItem)))
@@ -112,8 +112,8 @@ public class magnet extends Item {
     @Environment(EnvType.CLIENT)
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        tooltip.add(new TranslatableText("item.simple_magnets.magnet.tooltip.range", this.maxRange));
-        tooltip.add(new TranslatableText("item.simple_magnets.magnet.tooltip.state", this.getState(itemStack)));
+        tooltip.add(new TranslatableText("item.simple_magnets.magnet.tooltip.range", maxRange));
+        tooltip.add(new TranslatableText("item.simple_magnets.magnet.tooltip.state", this.getState(itemStack) ? "Enabled" : "Disabled"));
     }
 
     @Environment(EnvType.CLIENT)
