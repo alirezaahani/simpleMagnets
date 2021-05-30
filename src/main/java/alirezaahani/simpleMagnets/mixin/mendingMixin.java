@@ -15,7 +15,7 @@ import alirezaahani.simpleMagnets.simpleMagnets;
 public class mendingMixin {
     @Inject(at = @At("RETURN"), method = "isAcceptableItem(Lnet/minecraft/item/ItemStack;)Z", cancellable = true)
     public boolean isAcceptableItem(ItemStack stack, CallbackInfoReturnable<Boolean> info) {
-        if((Enchantment)(Object)this instanceof MendingEnchantment && stack.getItem() == simpleMagnets.MAGNET_INSTANCE.asItem()) {
+        if((Object)this instanceof MendingEnchantment && stack.getItem() == simpleMagnets.MAGNET_INSTANCE.asItem()) {
             info.setReturnValue(false);
         }
         return info.getReturnValue();
