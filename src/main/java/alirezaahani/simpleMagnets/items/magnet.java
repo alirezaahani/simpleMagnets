@@ -14,7 +14,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -31,14 +31,14 @@ public class magnet extends Item {
     private final static String stateId = "ACTIVE";
     private int ticks = 0;
 
-    private Tag<Item> notTeleportableItem = TagRegistry.item(new Identifier("simple_magnets","not_teleportable_item"));
+    private final static Tag<Item> notTeleportableItem = TagRegistry.item(new Identifier("simple_magnets","not_teleportable_item"));
 
     private void initState(ItemStack stack) {
         if(!stack.isEmpty()) {
             if(!stack.hasTag()) {
-                stack.setTag(new CompoundTag());
+                stack.setTag(new NbtCompound());
             }
-            CompoundTag nbt = stack.getTag();
+            NbtCompound nbt = stack.getTag();
             if(!nbt.contains(stateId)) {
                 nbt.putBoolean(stateId, false);
             }
@@ -95,7 +95,7 @@ public class magnet extends Item {
         for(Entity nearbyEntity: world.getEntitiesByType(EntityType.ITEM, player.getBoundingBox().expand(maxRange), EntityPredicates.VALID_ENTITY))
         {
             ItemEntity itemEntity = (ItemEntity) nearbyEntity;
-            if(!(itemEntity.getStack().getItem().isIn(this.notTeleportableItem)))
+            if(!(itemEntity.getStack().isIn(notTeleportableItem)))
             {
                 nearbyEntity.onPlayerCollision(player);
                 hasCollected = true;
