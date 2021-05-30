@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "simple_magnets:magnet"
+  },
+  "addition": {
+    "item": "minecraft:copper_ingot"
+  },
+  "result": {
+    "item": "simple_magnets:strong_magnet"
+  }
+}

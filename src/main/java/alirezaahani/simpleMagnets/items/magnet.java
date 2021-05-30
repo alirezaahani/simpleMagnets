@@ -27,9 +27,9 @@ import net.minecraft.tag.Tag;
 
 public class magnet extends Item {
 
-    private final static short maxRange = 16;
     private final static String stateId = "ACTIVE";
     private int ticks = 0;
+    private short maxRange;
 
     private final static Tag<Item> notTeleportableItem = TagRegistry.item(new Identifier("simple_magnets","not_teleportable_item"));
 
@@ -62,8 +62,9 @@ public class magnet extends Item {
         this.setState(stack, !getState(stack));
     }
 
-    public magnet() {
-        super(new FabricItemSettings().group(ItemGroup.TOOLS).maxDamage(1024).rarity(Rarity.UNCOMMON));
+    public magnet(short maxRange, int damage) {
+        super(new FabricItemSettings().group(ItemGroup.TOOLS).maxDamage(damage).rarity(Rarity.UNCOMMON));
+        this.maxRange = maxRange;
     }
 
     @Override

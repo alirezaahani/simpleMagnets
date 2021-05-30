@@ -1,5 +1,8 @@
 {
     "item.simple_magnets.magnet": "Magnet",
     "item.simple_magnets.magnet.tooltip.range": "Range: %d blocks",
-    "item.simple_magnets.magnet.tooltip.state": "%d"
+    "item.simple_magnets.magnet.tooltip.state": "%d",
+    "item.simple_magnets.strong_magnet": "Strong magnet",
+    "item.simple_magnets.strong_magnet.tooltip.range": "Range: %d blocks",
+    "item.simple_magnets.strong_magnet.tooltip.state": "%d"
 }
