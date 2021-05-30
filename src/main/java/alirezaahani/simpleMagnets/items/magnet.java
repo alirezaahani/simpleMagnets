@@ -7,6 +7,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.sound.Sound;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -16,6 +17,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
@@ -28,8 +30,9 @@ import net.minecraft.tag.Tag;
 public class magnet extends Item {
 
     private final static String stateId = "ACTIVE";
-    private int ticks = 0;
-    private short maxRange;
+    private final short speed;
+    private final short maxRange;
+    private short ticks;
 
     private final static Tag<Item> notTeleportableItem = TagRegistry.item(new Identifier("simple_magnets","not_teleportable_item"));
 
@@ -62,17 +65,19 @@ public class magnet extends Item {
         this.setState(stack, !getState(stack));
     }
 
-    public magnet(short maxRange, int damage) {
+    public magnet(short maxRange, int damage, short speed) {
         super(new FabricItemSettings().group(ItemGroup.TOOLS).maxDamage(damage).rarity(Rarity.UNCOMMON));
         this.maxRange = maxRange;
+        this.speed = speed;
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity playerEntity, Hand hand) {    
         ItemStack stack = playerEntity.getStackInHand(hand);
         this.switchState(stack);
+        playerEntity.playSound(this.getState(stack) ? SoundEvents.BLOCK_BEACON_ACTIVATE : SoundEvents.BLOCK_BEACON_DEACTIVATE, 0.5F, 2F);
 
-        return TypedActionResult.success(stack);
+        return TypedActionResult.success(stack, false);
     }
     
     @Override
@@ -84,8 +89,9 @@ public class magnet extends Item {
         PlayerEntity player = (PlayerEntity) entity;
         boolean hasCollected = false;
 
-        if(!(ticks % 5 == 0))
+        if(!(this.ticks == this.speed))
             return;
+        this.ticks = 0;
         
         if(!this.getState(stack))
             return;
@@ -95,7 +101,7 @@ public class magnet extends Item {
         
         for(Entity nearbyEntity: world.getEntitiesByType(EntityType.ITEM, player.getBoundingBox().expand(maxRange), EntityPredicates.VALID_ENTITY))
         {
-            ItemEntity itemEntity = (ItemEntity) nearbyEntity;
+            ItemEntity itemEntity = (ItemEntity)nearbyEntity;
             if(!(itemEntity.getStack().isIn(notTeleportableItem)))
             {
                 nearbyEntity.onPlayerCollision(player);
@@ -114,6 +120,7 @@ public class magnet extends Item {
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.simple_magnets.magnet.tooltip.range", maxRange));
+        tooltip.add(new TranslatableText("item.simple_magnets.magnet.tooltip.speed", this.speed));
         tooltip.add(new TranslatableText("item.simple_magnets.magnet.tooltip.state", this.getState(itemStack) ? "Enabled" : "Disabled"));
     }
 

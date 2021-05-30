@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "simple_magnets:item/strong_magent"
+    "layer0": "simple_magnets:item/strong_magnet"
   },
   "display": {
     "thirdperson_righthand": {
