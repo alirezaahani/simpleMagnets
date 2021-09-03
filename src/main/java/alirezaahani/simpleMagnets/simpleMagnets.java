@@ -2,6 +2,7 @@ package alirezaahani.simpleMagnets;
 
 import alirezaahani.simpleMagnets.items.magnet;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.tag.TagFactory;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
@@ -13,7 +14,8 @@ public class simpleMagnets implements ModInitializer {
 	public static final magnet MAGNET_INSTANCE = new magnet((short)16, 1024, (short)5);
 	public static final magnet STRONG_MAGNET_INSTANCE = new magnet((short)32, 1500,(short)1);
 	public static final String MOD_ID = "simple_magnets";
-	public static final Tag<Item> magnets = TagRegistry.item(new Identifier("simple_magnets","magnets"));
+
+	public static final Tag<Item> magnets = TagFactory.ITEM.create(new Identifier("simple_magnets","magnets"));
 
 	@Override
 	public void onInitialize() {
